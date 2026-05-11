@@ -1,0 +1,76 @@
+@use "sass:math";
+@use "../abstracts/" as core;
+
+/// Base product component
+/// @group Components
+.product-card {
+    display: flex;           // 1. Convertimos la tarjeta en flex
+    flex-direction: column; 
+
+    @include core.border-radius(0.5rem);
+    @include core.box-shadow();
+    @include core.hover-effects(0.3s, y, -0.5rem);
+
+    background-color: core.color(yellow);
+    overflow: hidden;
+
+    /// Image component
+    /// @group Components
+    &__media {
+        background-color: core.color(white);
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+
+        border: 0.5rem solid core.color(red);
+
+        img {
+            width: 5rem;
+            height: 5rem;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        flex-grow: 1; 
+        padding: 1.5rem;
+        font-size: core.font_size(sm);
+        
+        @include core.border();
+        @include core.border-radius(0 0 0.5rem 0.5rem);
+    }
+
+    &__text__highlight {
+        color: core.color(purple);
+        font-weight: bold;
+    }
+
+    &__title {
+        color: core.color(wine);
+        margin-bottom: 0.5rem;
+        @include core.heading-size(lg);
+    }
+
+    /// Highlighted product component
+    /// @group Components
+    &__highlight {
+        position: relative;
+        border: 0.5rem solid core.color(cyan);
+        @include core.border-radius(1rem, 1rem, 0, 0);
+
+        &::before {
+            content: "FEATURED";
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            background-color: core.color(orange);
+            color: core.color(white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            @include core.border-radius(2rem);
+            @include core.box-shadow(0, 2px, 5px);
+        }
+    }
+}

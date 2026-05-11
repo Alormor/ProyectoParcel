@@ -1,0 +1,70 @@
+//// Proyecto: Ejemplo SaSSdoc Moderno
+/// @author alormor
+@use "sass:map";
+
+/*-- FONTS --*/
+/// Importar fuentes desde Google Fonts
+/// @group Typography
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/// Font style
+/// @group Typography
+/// @type String
+$font-stack: Helvetica, sans-serif;
+$font-heading: 'Averia Libre', serif;
+
+/// Font sizes
+/// @group Typography
+/// @type Map
+$font-sizes: (
+    xxl: 3rem,
+    xl: 2.25rem,
+    lg: 1.75rem,    
+    md: 1.25rem,
+    sm: 1rem,
+    xs: 0.75rem
+);
+
+/// Color palette
+/// @group Colors
+/// @type Map
+$colors: (
+    wine: #AD204A,
+    orange: #FF9B45,
+    cyan: #00A0B8,
+    red: #DD2330,
+    yellow: #FED348,
+    purple: #8B6FB3,
+    dark: #1B110F,
+    white: #FFFFFF
+);
+
+
+/// Get a color from the color map
+/// @group Colors
+/// @param {String} $name
+/// @return {String} Color Hex
+/// @example background-color: core.color($name);
+@function color($name) {
+    @if map.has-key($colors, $name) {
+        @return map.get($colors, $name);
+    }
+
+    @else {
+        @error "Color '#{$name}' doesn't exist in the $colors map";
+    }
+}
+
+/// Get a font size from the font sizes map
+/// @group Typography
+/// @param {String} $name
+/// @return {Number} Font Size
+@function font_size($name) {
+    @if map.has-key($font-sizes, $name) {
+        @return map.get($font-sizes, $name);
+    }
+
+    @else {
+        @error "Size '#{$name}' doesn't exist in the $font-sizes map";
+    }
+}

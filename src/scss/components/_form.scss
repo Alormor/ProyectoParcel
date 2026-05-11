@@ -1,0 +1,126 @@
+@use "sass:math";
+@use "../abstracts/" as core;
+
+.contact-form{
+    grid-column: 2 / -2;
+    margin-top: -3rem;
+    background-color: core.color(white);
+
+    padding: 2rem 3rem;
+    
+    @include core.border();
+    @include core.border-radius(0.5rem);
+    @include core.box-shadow();
+    @include core.grid-flexible(4rem, 5rem, 1.5rem, 2);
+    
+    .contact-heading__text{
+        grid-column: 1 / -1;
+        color: core.color(wine);
+        background-color: core.color(white);
+
+        @include core.heading-size(md, center);
+        @include core.border-radius(0.5rem 0.5rem 0 0);
+    }
+    
+    &__group{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        
+        label{
+            @include core.heading-size(md);
+            font-weight: 600;
+            color: core.color(dark);
+            margin-left: 0.2rem;
+        }
+
+        select{
+            background-color: core.color(white);
+        }
+
+        input, textarea, select{
+           @include core.border-radius(0.3rem);   
+           padding: 0.8rem 1.2rem;
+           border: 2px solid core.color(purple);
+
+            &:focus {
+                outline: none;
+                border-color: core.color(yellow);
+                @include core.box-shadow(4px, 4px, 4px, 0.75, purple);
+            }
+        }
+
+        &.message {
+            grid-column: span 2;
+            
+            textarea {
+                min-height: 120px;
+                resize: vertical;
+            }
+        }
+    }
+
+    &__checkbox {
+        grid-column: span 2;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        input {
+            cursor: pointer;
+            accent-color: core.color(red);
+        }
+
+        label {
+            font-size: core.font_size(sm);
+            cursor: pointer;
+        }
+
+        &:hover{
+            label {
+                color: core.color(red);
+            }
+        }
+    }
+
+    &__checkbox + &__checkbox {
+        margin-top: -1.5rem;
+    }
+
+    .button-container{
+        grid-column: span 2;
+        justify-self: center;
+
+        button{
+            border: none;
+            padding: 1rem 4rem;
+            @include core.border-radius(50rem);
+
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            background-color: core.color(purple);
+            color: core.color(yellow);
+
+            @include core.hover-effects(0.5s, y, -0.5rem, purple);
+
+            &:hover{
+                background-color: core.color(yellow);
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form{
+        grid-column: 1 / -1;
+        @include core.grid-flexible(1rem, 0, 1.5rem, 1);
+
+        &__group.message,
+        &__checkbox,
+        .button-container {
+            grid-column: span 1;
+        }
+    }
+}

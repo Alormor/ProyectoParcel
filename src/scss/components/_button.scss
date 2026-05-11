@@ -1,0 +1,24 @@
+@use "sass:color";
+@use "../abstracts/" as core;
+
+/// Button component
+/// @group Components
+.button{
+  padding: 1.5rem 1rem;
+  border-style: none;
+  @include core.border-radius(1rem);
+
+  cursor: pointer;
+}
+
+@each $name, $color in core.$colors {
+  .#{$name} {
+    background-color: core.color($name);
+    @include core.box-shadow(0, 8px, 20px);
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover{
+      background-color: color.adjust(core.color($name), $lightness: 10%);
+    }
+  }
+}

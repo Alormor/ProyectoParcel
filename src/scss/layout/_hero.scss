@@ -1,0 +1,86 @@
+@use '../abstracts/' as core;
+@use 'sass:map';
+
+.hero {
+    grid-column: 1 / -1;
+    position: relative;
+    
+    min-height: 25rem;           
+    display: flex;               
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: core.color(white); 
+    font-family: core.$font-stack; 
+
+    &::before {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/img/hero.png");
+        background-size: cover;  
+        background-position: center; 
+        background-repeat: no-repeat;
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        opacity: 0.8; 
+        z-index: -1; 
+    }
+
+    &__content {
+        max-width: 60rem; 
+        padding: 2rem;
+        animation: fadeIn 1.5s ease-out; 
+    }
+
+    &__title {
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        line-height: 1.1;
+
+        @include core.heading-size(xxl, center);
+
+        &__highlight {
+            display: inline-block;
+            color: core.color(wine);
+        }
+    }
+
+    &__text {
+        margin-bottom: 3rem;
+        line-height: 1.6;
+        color: core.color(white);
+
+        .highlight-span{
+            display: block;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 15rem;
+        justify-content: center;
+        padding: 2rem;
+
+        .button{
+            font-weight: bold;
+            color: core.color(orange);
+            font-size: core.font_size(sm);
+
+            padding: 1.5rem 2.5rem;
+
+            @include core.hover-effects(0.3s, y, -0.5rem);
+        }
+    }
+ 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

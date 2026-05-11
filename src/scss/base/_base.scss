@@ -1,0 +1,37 @@
+@use '../abstracts/' as core;
+
+/* Intial values */
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; 
+
+  @media (max-width: 1024px) {
+    font-size: 90%;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 70%;
+  }
+}
+
+
+body {
+    font-family: core.$font-stack;
+    font-size: core.font_size(md);
+    color: core.color(dark);
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}

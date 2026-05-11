@@ -1,0 +1,16 @@
+@use '../abstracts/' as core;
+
+.reviews{
+    grid-column: 1 / -1;
+
+    
+    .reviews-heading{
+        color: core.color(orange);
+        @include core.heading-size();
+        @include core.heading-underline();
+    }
+    
+    .reviews-list{
+        @include core.grid-flexible(13rem, 1.5rem);
+    }
+}

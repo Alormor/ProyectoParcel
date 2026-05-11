@@ -1,0 +1,47 @@
+@use "sass:math";
+@use "../abstracts/" as core;
+
+/// Base review component
+/// @group Components
+.review{
+    background: linear-gradient(35deg, core.color(cyan) 0%, core.color(yellow) 70%);
+    @include core.border();
+    @include core.border-radius(0.5rem);
+    @include core.box-shadow();
+    @include core.hover-effects(0.5s, x, -0.5rem);
+    overflow: hidden;
+    
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title {
+        color: core.color(wine);
+        margin-bottom: 0.5rem;
+        @include core.heading-size(sm);
+    }
+
+    /// User section
+    /// @group Components
+    &-user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &__author {
+            @include core.heading-size(sm);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+    }
+
+    &__text {
+        font-size: core.font_size(sm);
+        color: core.color(white);
+
+        i{
+                color: core.color(dark);
+            }
+    }
+}

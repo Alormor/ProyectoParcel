@@ -1,0 +1,20 @@
+@use '../abstracts/' as core;
+
+.buttons-list{
+    grid-column: 1 / -1;
+
+    @include core.grid-flexible(9rem, 1.5rem);
+
+    // @include core.response(sm){
+    //     grid-column: 1 / -1;
+    //     padding: 2rem;
+    //     gap: 2rem;
+    // }
+}
+
+@media (max-width: 480px) {
+  .buttons-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

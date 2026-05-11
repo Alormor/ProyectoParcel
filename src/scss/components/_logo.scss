@@ -1,0 +1,28 @@
+/// Base logo component
+/// @group Components
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+
+    /// Logo image component
+    /// @group Components
+    &-img{
+        height: 100%;
+        width: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .logo{
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+}

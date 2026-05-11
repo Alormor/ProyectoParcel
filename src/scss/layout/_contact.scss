@@ -1,0 +1,16 @@
+@use '../abstracts/' as core;
+
+.contact{
+    display: contents;
+    
+    .contact-heading{
+        &__title{
+            
+            grid-column: 1 / -1;
+            color: core.color(orange);
+            @include core.heading-size();
+            @include core.heading-underline();
+        }
+    }
+    
+}

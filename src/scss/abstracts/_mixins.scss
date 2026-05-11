@@ -1,0 +1,121 @@
+@use "variables" as vars;
+
+/// Configuration to center a grid
+/// @group Layout
+/// @param {Number} $n-col - Number of columns
+@mixin center-grid($n-col){
+  &-list{
+    display: grid;
+    grid-template-columns: repeat($n-col, 1fr);
+    place-items: center;
+  } 
+}
+
+/// Quick Flexbox display
+/// @group Layout
+/// @param {Number} $min-size [18rem] - Column minimun size
+/// @param {Number} $c-gap [1.5rem] - Space between cells
+/// @param {Number} $r-gap [1.5rem] - Space between rows
+/// @param {String | Number} $columns [auto-fit] - Number of columns
+@mixin grid-flexible($min-size: 18rem, $c-gap: 1.5rem, $r-gap: 1.5rem, $columns: auto-fit){
+  display: grid;
+  grid-template-columns: repeat($columns, minmax($min-size, 1fr));
+  column-gap: $c-gap;
+  row-gap: $r-gap;
+}
+
+/// Border radius utility
+/// @group Layout
+/// @param {List} $radius - One or more radius values (1 to 4)
+@mixin border-radius($radius...){
+  border-radius: $radius;
+}
+
+/// Border
+/// @group Layout
+/// @param {Color} $color [wine] - Color of the border
+/// @param {Number} $width [2px] - Width of the border
+@mixin border($color: red, $width: 3px){
+  border: $width solid vars.color($color);
+}
+
+/// Box shadow utility
+/// @group Layout
+/// @param {Number} $shadow-x - Horizontal offset
+/// @param {Number} $shadow-y - Vertical offset
+/// @param {Number} $shadow-blur - Blur radius
+/// @param {Number} $shadow-opacity - Opacity of the box shadow
+/// @param {Color} $shadow-color - Color of the box shadow
+@mixin box-shadow($shadow-x: 8px, $shadow-y: 16px, $shadow-blur: 20px, $shadow-opacity: 0.25, $shadow-color: null) {
+  @if $shadow-color != null {
+    box-shadow: $shadow-x $shadow-y $shadow-blur rgba(vars.color($shadow-color), $shadow-opacity);
+  } @else {
+    box-shadow: $shadow-x $shadow-y $shadow-blur rgba(10, 1, 60, $shadow-opacity);
+  }
+}
+
+/// Heading size
+/// @group Typography
+/// @param {Number} $size [xl] - Size of the heading
+/// @param {String} $align [left] - Alignment of the heading
+@mixin heading-size($size: xl, $align: left){
+  font-size: vars.font_size($size);
+  font-family: vars.$font-heading;
+  text-align: $align;
+}
+
+/// Underline for headings
+/// @group Typography
+/// @param {Color} $color [cyan] - Color of the underline
+/// @param {Number} $width [6rem] - Width of the underline
+@mixin heading-underline($color: cyan, $width: 6rem) {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: $width;
+    height: 0.4rem;
+
+    background-color: vars.color($color);
+    border-radius: 99px;
+    opacity: 0.9;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.8rem;
+    left: 0;
+    width: $width - $width / 4;
+    height: 0.4rem;
+
+    background-color: vars.color($color);
+    opacity: 0.9;
+    border-radius: 99px;
+  }
+}
+
+
+/// Hover effects for components
+/// @group Layout
+/// @param {Number} $speed [0.2s] - Speed of the hover effect
+/// @param {String} $direction [x|y] - Direction of the hover effect
+/// @param {Number} $movement [0.5rem] - Movement of the hover effect
+/// @param {Color} $color [null] - Color of the hover effect
+@mixin hover-effects($speed: 0.2s, $direction: y, $movement: 0.5rem, $color: null) {
+  transition: transform $speed ease, box-shadow $speed ease;
+  &:hover {
+    @if $direction == x {
+      transform: translateX($movement);
+    } @else if $direction == y {
+      transform: translateY($movement);
+    }
+    @if $color != null {
+      color: vars.color($color);
+    }
+  }
+}

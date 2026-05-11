@@ -1,0 +1,11 @@
+@use '../abstracts/' as core;
+
+.container {
+    padding: 5rem;
+    
+    background: core.color(purple);
+    background: linear-gradient(35deg, core.color(purple), core.color(wine));
+
+    @include core.grid-flexible(2rem, 0, 3rem, 8);
+}
+
