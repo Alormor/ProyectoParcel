@@ -2,6 +2,8 @@
 
 Proyecto enfocado  en el **diseño web y maquetación**. El objetivo principal es hacer uso de preprocesadores y herramientas de empaquetado modernas.
 
+En producción: https://alormor.github.io/ProyectoParcel/
+
 ### Tecnologías utilizadas:
 *   **SASS (SCSS)**: Para la estructura avanzada de estilos, mixins y funciones.
 *   **Parcel**: Como empaquetador para la gestión de recursos y servidor de desarrollo.
