@@ -1,24 +1,37 @@
+@use "sass:math";
 @use "sass:color";
 @use "../abstracts/" as core;
 
 /// Button component
 /// @group Components
-.button{
+.button {
+  font-family: core.$font-heading;
+  font-size: inherit;
+
   padding: 1.5rem 1rem;
   border-style: none;
   @include core.border-radius(1rem);
-
   cursor: pointer;
-}
 
-@each $name, $color in core.$colors {
-  .#{$name} {
-    background-color: core.color($name);
-    @include core.box-shadow(0, 8px, 20px);
-    transition: background-color 0.3s ease-in-out;
+  $index: 0;
+  @each $name, $color in core.$button-colors {
+    &.#{$name} {
+      $index: $index + 1;
+      
+      background-color: $color;
+      @include core.box-shadow(0, 8px, 20px);
+      
+      transition: background-color 0.3s ease-in-out;
+     
+      @if $index % 2 == 0 {
+        @include core.hover-effects(0.4s, y, -0.5rem);
+      } @else {
+        @include core.hover-effects(0.4s, y, 0.5rem);
+      }
 
-    &:hover{
-      background-color: color.adjust(core.color($name), $lightness: 10%);
+      &:hover {
+        background-color: color.adjust($color, $lightness: 10%);
+      }
     }
   }
 }

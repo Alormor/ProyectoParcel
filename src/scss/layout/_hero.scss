@@ -68,9 +68,12 @@
         padding: 2rem;
 
         .button{
+            font-family: core.$font-heading;
+            font-size: inherit;
+            
             font-weight: bold;
             color: core.color(orange);
-            font-size: core.font_size(sm);
+            background-color: core.color(wine);
 
             padding: 1.5rem 2.5rem;
 

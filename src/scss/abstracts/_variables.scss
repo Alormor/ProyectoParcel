@@ -39,6 +39,20 @@ $colors: (
     white: #FFFFFF
 );
 
+/// Color for the buttons
+/// @group Colors
+/// @type Map
+$button-colors: (
+    primary: #C86B8C, 
+    secondary: #A97CCF,
+    tertiary: #5BB7C9,
+    quaternary: #E06A72,
+    quinary: #D9A95C,
+    senary: #7E8CCF,
+    septenary: #5F6B7A,
+    octonary: #B8C2CC
+);
+
 
 /// Get a color from the color map
 /// @group Colors

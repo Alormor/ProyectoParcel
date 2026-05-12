@@ -39,9 +39,12 @@
         }
 
         input, textarea, select{
-           @include core.border-radius(0.3rem);   
-           padding: 0.8rem 1.2rem;
-           border: 2px solid core.color(purple);
+            font-family: inherit;
+            font-size: core.font_size(sm);
+            
+            @include core.border-radius(0.3rem);   
+            padding: 0.8rem 1.2rem;
+            border: 2px solid core.color(purple);
 
             &:focus {
                 outline: none;
@@ -92,6 +95,8 @@
         justify-self: center;
 
         button{
+            font-family: core.$font-heading;
+            font-size: inherit;
             border: none;
             padding: 1rem 4rem;
             @include core.border-radius(50rem);
